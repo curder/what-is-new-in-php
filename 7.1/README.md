@@ -104,3 +104,33 @@ class User
 
 $age = (new User(29))->subscribe(); // string(16) "subscribing here"
 ```
+### 多错误处理
+
+之前处理错误时，会使用 `try` `catch`关键字对各种错误进行处理，但是有时候我们的逻辑需要对一些错误做统一的处理，在php7.1中可以使用`|`来分割多个错误进行统一处理。
+
+```php
+<?php
+
+// 定义两个自定义的错误类
+class ChargeRejected extends Exception {}
+class NotEnoughFounds extends Exception {}
+
+class User
+{
+    public function subscribe()
+    {
+        var_dump('subscrbing');
+        // throw new ChargeRejected;
+        throw new NotEnoughFounds;
+    }
+}
+
+try {
+    (new User())->subscribe();
+} catch (ChargeRejected | NotEnoughFounds $e) { // 当try里的逻辑抛出 ChargeRejected 或者 NotEnoughFounds 错误时都会执行下面的逻辑
+    flash("Failed");
+}
+
+function flash($message){ var_dump($message); }
+```
+
