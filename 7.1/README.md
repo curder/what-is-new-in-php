@@ -134,3 +134,40 @@ try {
 function flash($message){ var_dump($message); }
 ```
 
+
+
+### Iterable 伪类
+
+
+
+`iterable` 被称为伪类，它可以被用在参数或者返回值类型中。
+
+```php
+<?php
+
+function dump(iterable $items)
+{
+    foreach($items as $item) {
+        var_dump($item);
+    }
+}
+
+class Collection implements IteratorAggregate
+{
+    protected $items;
+
+    public function __construct($items)
+    {
+        $this->items = $items;
+    }
+
+    public function getIterator()
+    {
+        return new ArrayIterator($this->items);
+    }
+}
+
+dump(["one", 'two', 'three']); // string(3) "one" string(3) "two" string(5) "three"
+dump(new Collection([1, 2, 3])); // int(1) int(2) int(3)
+```
+
