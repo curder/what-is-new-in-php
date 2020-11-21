@@ -55,3 +55,52 @@ foreach($persons as ['name' => $name, 'hobby' => $hobby, 'age' => $age]) {
   var_dump($name, $age, $hobby);
 }
 ```
+
+### nullable 和 忽略类型
+
+
+
+定义方法返回的数据类型。当返回的不是制定类型时，则返回`null`
+
+```php
+<?php
+
+class User
+{
+    protected $age;
+
+    // public function __construct($age)
+    // {
+    //     $this->age = $age;
+    // }
+
+    // 定义方法返回的数据类型，当返回的不是制定类型时，则返回null
+    public function age(): ?int
+    {
+        return $this->age;
+    }
+}
+
+$age = (new User(29))->age();
+var_dump($age); // NULL
+```
+
+
+
+定义方法参数类型和返回值为`void`
+
+```php
+<?php
+
+class User
+{
+    public function subscribe(?callable $callback = null): void
+    {
+        var_dump("subscribing here");
+
+        if ($callback) $callback();
+    }
+}
+
+$age = (new User(29))->subscribe(); // string(16) "subscribing here"
+```
