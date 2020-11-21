@@ -1,9 +1,10 @@
 ## PHP7.0更新
 
-### [类型的声明](/7.0/scalar_typehints.php)
+### 类型的声明
 
 可以使用字符串(string), 整数 (int), 浮点数 (float), 以及布尔值 (bool)，来声明函数的参数类型与函数返回值。
 
+#### [参数类型声明](/7.0/scalar_typehints.php)
 ```php
 <?php
 declare(strict_types = 1);
@@ -29,3 +30,21 @@ setAge(29); // int(29)
 ```
 > 标量类型声明 有两种模式: 强制 (默认) 和 严格模式。
 declare(strict_types=1),必须放在文件的第一行执行代码，当前文件有效！
+
+
+#### [返回值类型声明](/7.0/return_type_declarations.php)
+
+```php
+<?php
+
+class User {}
+
+function getUser(): User
+{
+    // return []; // 如果定义了返回值类型，则不允许返回其他数据类型
+    return new User;
+}
+
+var_dump(getUser());
+```
+
