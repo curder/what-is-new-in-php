@@ -4,6 +4,7 @@
     - [参数类型的声明](/7.0/scalar_typehints.php)
     - [返回值类型声明](/7.0/return_type_declarations.php)
     - [新增操作符`<==>`](/7.0/spaceships.php)
+    - [新增操作符`??`](/7.0/null_coalesce_operator.php)
 
 - [What's new in php 7.1](/7.1/README.md)
     - [数组解构](/7.1/array_destructuring.php)

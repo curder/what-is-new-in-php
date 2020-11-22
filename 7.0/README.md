@@ -78,3 +78,18 @@ usort($games, function($a, $b) {
 var_dump($games); // array(5) {[0]=>string(5) "Zelda" [1]=>string(15) "Super Maro Bros" [2]=>string(10) "Metal Gear" [3]=>string(11) "Mass Effact" [4]=>string(7) "Fallout"}
 ```
 
+### [新增操作符`??`](/7.0/null_coalesce_operator.php)
+
+如果变量存在值且不为null，则返回自身的值，否则返回它的第二个操作数。
+
+```php
+<?php
+
+// Before
+$name = isset($_GET['name']) ? $_GET['name'] : 'guest';
+
+// After
+$name = $_GET['name'] ?? 'guest';
+
+var_dump($name); // string(5) "guest"
+```
