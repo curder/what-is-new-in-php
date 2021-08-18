@@ -2,7 +2,7 @@
 home: true
 title: What's New in PHP
 heroText: What's New in PHP
-tagline:  记录开发
+tagline:  Record the new features of PHP version updates
 
 
 footer: MIT Licensed |Copyright ©2021-present Curder
