@@ -1,4 +1,10 @@
-## PHP7.1更新
+---
+sidebarDepth: 3
+sidebar: auto
+---
+
+
+# PHP 7.1
 
 ### [数组解构](/docs/7.1/array_destructuring.php)
 
