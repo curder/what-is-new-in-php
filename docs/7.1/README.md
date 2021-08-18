@@ -1,6 +1,6 @@
 ## PHP7.1更新
 
-### [数组解构](/7.1/array_destructuring.php)
+### [数组解构](/docs/7.1/array_destructuring.php)
 
 当我们需要解构数组的时候，通常会有如下操作：
 
@@ -56,7 +56,7 @@ foreach($persons as ['name' => $name, 'hobby' => $hobby, 'age' => $age]) {
 }
 ```
 
-### [nullable 和 忽略类型](/7.1/nullable_and_void_type.php)
+### [nullable 和 忽略类型](/docs/7.1s/7.1/nullable_and_void_type.php)
 
 
 
@@ -104,7 +104,7 @@ class User
 
 $age = (new User(29))->subscribe(); // string(16) "subscribing here"
 ```
-### [多错误处理](/7.1/multi_catch_exception_handling.php)
+### [多错误处理](/docs/7.1s/7.1/multi_catch_exception_handling.php)
 
 之前处理错误时，会使用 `try` `catch`关键字对各种错误进行处理，但是有时候我们的逻辑需要对一些错误做统一的处理，在php7.1中可以使用`|`来分割多个错误进行统一处理。
 
@@ -136,7 +136,7 @@ function flash($message){ var_dump($message); }
 
 
 
-### [Iterable 伪类](/7.1/iterabres.php)
+### [Iterable 伪类](/docs/7.1/iterabres.php)
 
 
 
