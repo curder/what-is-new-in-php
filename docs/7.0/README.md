@@ -4,7 +4,7 @@
 
 可以使用字符串(string), 整数 (int), 浮点数 (float), 以及布尔值 (bool)，来声明函数的参数类型与函数返回值。
 
-#### [参数类型声明](/docs/7.0s/7.0/scalar_typehints.php)
+#### [参数类型声明](/docs/7.0/scalar_typehints.php)
 ```php
 <?php
 declare(strict_types = 1);
@@ -32,7 +32,7 @@ setAge(29); // int(29)
 declare(strict_types=1),必须放在文件的第一行执行代码，当前文件有效！
 
 
-#### [返回值类型声明](/docs/7.0s/7.0/return_type_declarations.php)
+#### [返回值类型声明](/docs/7.0/return_type_declarations.php)
 
 ```php
 <?php
@@ -48,7 +48,7 @@ function getUser(): User
 var_dump(getUser());
 ```
 
-### [新增操作符`<==>`](/docs/7.0s/7.0/spaceships.php)
+### [新增操作符`<==>`](/docs/7.0/spaceships.php)
 
 
 
@@ -78,7 +78,7 @@ usort($games, function($a, $b) {
 var_dump($games); // array(5) {[0]=>string(5) "Zelda" [1]=>string(15) "Super Maro Bros" [2]=>string(10) "Metal Gear" [3]=>string(11) "Mass Effact" [4]=>string(7) "Fallout"}
 ```
 
-### [新增操作符`??`](/docs/7.0s/7.0/null_coalesce_operator.php)
+### [新增操作符`??`](/docs/7.0/null_coalesce_operator.php)
 
 如果变量存在值且不为null，则返回自身的值，否则返回它的第二个操作数。
 
@@ -94,7 +94,7 @@ $name = $_GET['name'] ?? 'guest';
 var_dump($name); // string(5) "guest"
 ```
 
-### [命名空间引用优化](/docs/7.0s/7.0/grouped_imports/index.php)
+### [命名空间引用优化](/docs/7.0/grouped_imports/index.php)
 
 在之前的php版本语法的写法是：
 ```php

@@ -1,4 +1,4 @@
-## What'is new in php
+## What's new in php
 
 - [What's new in php 7.0](/docs/7.0/README.md)
     - [参数类型的声明](/docs/7.0/scalar_typehints.php)
