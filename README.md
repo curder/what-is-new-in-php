@@ -1,7 +1,7 @@
 ## What's New in PHP 
 
 - [What's New in PHP 7.0](/docs/7.0/README.md)
-    - [参数类型的声明](/docs/7.0/scalar_typehints.php)
+    - [参数类型的声明](/src/7.0/scalar_typehints.php)
     - [返回值类型声明](/docs/7.0/return_type_declarations.php)
     - [新增操作符`<==>`](/docs/7.0/spaceships.php)
     - [新增操作符`??`](/docs/7.0/null_coalesce_operator.php)
