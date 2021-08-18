@@ -136,7 +136,7 @@ function flash($message){ var_dump($message); }
 
 
 
-### [Iterable 伪类](/docs/7.1/iterabres.php)
+### [Iterable 伪类](/docs/7.1/iterables.php)
 
 
 
