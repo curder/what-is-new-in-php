@@ -37,3 +37,44 @@ if ($profile = $user->profile()) {
 // 8.0 允许通过 nullsafe 进行链式调用
 var_dump($user->profile()?->employment() ?? 'Not Provider');
 ```
+
+## [Match 表达式](https://www.php.net/releases/8.0/zh.php#match-expression)
+
+新的 `match` 类似于 `switch`，并具有以下功能：
+
+- Match 是一个表达式，它可以储存到变量中亦可以直接返回。
+- Match 分支仅支持单行，它不需要一个 `break;` 语句。
+- Match 使用严格比较。
+
+```php
+<?php
+class Conversation
+{
+    //
+}
+
+$object = new Conversation;
+
+//switch (get_class($object)) {
+//    case 'Conversation':
+//        $type = 'started_conversation';
+//        break;
+//
+//    case 'Reply':
+//        $type = 'replied_to_conversation';
+//        break;
+//
+//    case 'Comment':
+//        $type = 'commented_to_conversation';
+//        break;
+//}
+
+// 使用match表达式简化写法
+$type = match (get_class($object)) {
+    'Conversation' => 'stated_conversation',
+    'Reply' => 'replied_to_conversation',
+    'Comment' => 'commented_to_conversation',
+};
+
+echo $type;
+```
