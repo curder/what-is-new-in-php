@@ -122,5 +122,17 @@ var_dump($signup);
 
 > 在类的构造函数中可以初始化类属性类型，属性的可访问性，以及赋默认值。
 
+## [允许对象的 `::class`](https://wiki.php.net/rfc/class_name_literal_on_object)
 
+```php
+<?php
+class Conversation
+{
+    //
+}
 
+$object = new Conversation;
+var_dump($object::class, get_class($object)); // "Conversation" "Conversation"
+```
+
+> 在语法上类似于类常量访问，更加直观地期望语法 `$object::class` 也能正常工作并提供与 `get_class($object)` 相同的结果。
