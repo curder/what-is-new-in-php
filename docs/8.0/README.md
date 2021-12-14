@@ -136,3 +136,43 @@ var_dump($object::class, get_class($object)); // "Conversation" "Conversation"
 ```
 
 > 在语法上类似于类常量访问，更加直观地期望语法 `$object::class` 也能正常工作并提供与 `get_class($object)` 相同的结果。
+                                         
+## [命名参数](https://www.php.net/releases/8.0/zh.php#named-arguments)
+
+这个新的 PHP 8 特性允许您根据参数名称传递函数参数，而不是它们的顺序。 
+
+- 仅仅指定必填参数，跳过可选参数。
+- 参数的顺序无关、自己就是文档（self-documented）
+                                                 
+
+```php
+<?php
+
+
+class Invoice
+{
+    public function __construct(
+        private $description,
+        private $total,
+        private $date,
+        private $paid,
+    )
+    {
+        //
+    }
+}
+
+$invoice = new Invoice(
+    description: 'Customer installation',
+    total: 10000,
+    date: new DateTime,
+    paid: true,
+);
+
+
+var_dump($invoice);
+
+
+```
+
+> 命名参数有一个问题是当我们修改了函数命名的时候，则在调用函数的时候的命名参数也需要一同作修改，否则会抛出：`Uncaught Error: Unknown named parameter` 的错误
