@@ -78,3 +78,49 @@ $type = match (get_class($object)) {
 
 echo $type;
 ```
+                                                       
+
+## [构造器属性提升](https://www.php.net/releases/8.0/zh.php#constructor-property-promotion)
+
+在 PHP 8.0 中我们可以通过编写更少的代码来定义并初始化类属性。
+
+```php
+<?php
+class User
+{
+    public function __construct(protected string $name)
+    {
+    }
+}
+
+class Plan
+{
+    public function __construct(protected string $name = 'monthly')
+    {
+    }
+}
+
+class Signup
+{
+    /**
+     * @param  User  $user
+     * @param  Plan  $plan
+     */
+    public function __construct(
+        protected User $user,
+        protected Plan $plan
+    )
+    {
+    }
+}
+
+$user   = new User('jone_doe');
+$plan   = new Plan();
+$signup = new Signup($user, $plan);
+var_dump($signup);
+```
+
+> 在类的构造函数中可以初始化类属性类型，属性的可访问性，以及赋默认值。
+
+
+
