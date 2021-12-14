@@ -236,3 +236,24 @@ $dispatcher->dispatch($anotherEvent);
 
 var_dump($dispatcher);
 ```
+                              
+## [联合类型](https://www.php.net/releases/8.0/zh.php#union-types)
+
+相较于以前的 PHPDoc 声明类型的组合，现在可以用原生支持的联合类型声明取而代之，并在运行时得到校验。
+
+```php
+<?php
+
+class User
+{
+    public function makeFriendsWith(User|null $user) // 联合类型声明
+    {
+        var_dump('Yay friends');
+    }
+}
+
+$joe = new User;
+$sam = new User;
+
+$joe->makeFriendsWith(null);
+```
