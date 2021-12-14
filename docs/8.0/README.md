@@ -194,3 +194,45 @@ var_dump(str_ends_with($id, '_payment')); // true
 $url = 'https://example.com?foo=bar';
 var_dump(str_contains($url, '?')); // true
 ```
+                                      
+## [Weak Map 类](https://wiki.php.net/rfc/weak_maps)
+
+
+```php
+<?php
+interface Event {}
+
+class SomeEvent implements Event {}
+
+class AnotherEvent implements Event {}
+
+class Dispatcher
+{
+    protected WeakMap $dispatchCount;
+
+    public function __construct()
+    {
+        $this->dispatchCount = new WeakMap;
+    }
+    public function dispatch(Event $event)
+    {
+        if (!isset($this->dispatchCount[$event])) {
+            $this->dispatchCount[$event] = 0;
+        }
+
+        $this->dispatchCount[$event] ++;
+    }
+}
+
+$dispatcher = new Dispatcher;
+
+$event = new SomeEvent;
+
+$dispatcher->dispatch($event);
+$dispatcher->dispatch($event);
+
+$anotherEvent = new AnotherEvent;
+$dispatcher->dispatch($anotherEvent);
+
+var_dump($dispatcher);
+```
