@@ -30,6 +30,7 @@ module.exports = {
                 text: 'PHP 8',
                 children: [
                     '/8.0/',
+                    '/8.1/',
                 ],
             },
         ],
