@@ -5,3 +5,4 @@
 - [What's New in PHP 7.2](/docs/7.2/README.md)
 - [What's New in PHP 7.3](/docs/7.3/README.md)
 - [What's New in PHP 7.4](/docs/7.4/README.md)
+- [What's New in PHP 8.0](/docs/8.0/README.md)
