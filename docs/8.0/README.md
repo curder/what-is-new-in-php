@@ -194,6 +194,34 @@ var_dump(str_ends_with($id, '_payment')); // true
 $url = 'https://example.com?foo=bar';
 var_dump(str_contains($url, '?')); // true
 ```
+
+## [get_debug_type 函数](https://wiki.php.net/rfc/get_debug_type)
+
+`get_debug_type` 函数返回给定变量的数据类型。 下面是跟 `gettype` 函数返回的数据类型对比：
+
+```php
+<?php
+// 字符串
+$string = 'I am a string';
+var_dump(get_debug_type($string)); // string(6) "string" 、string(6) "string"
+
+// 整型
+$int = 1;
+var_dump(get_debug_type($int), gettype($int)); // string(3) "int" 、string(7) "integer"
+
+// 浮点型
+$float = 0.1;
+var_dump(get_debug_type($float), gettype($float)); // string(5) "float" 、string(6) "double"
+
+// 数组
+$array = [1,2];
+var_dump(get_debug_type($array), gettype($array)); // string(5) "array" 、string(5) "array"
+
+// 对象
+class User {}
+$object = new User;
+var_dump(get_debug_type($object), gettype($object)); // string(4) "User" 、string(6) "object"
+```
                                       
 ## [Weak Map 类](https://wiki.php.net/rfc/weak_maps)
 
