@@ -176,8 +176,10 @@ var_dump($invoice);
 ```
 
 > 命名参数有一个问题是当我们修改了函数命名的时候，则在调用函数的时候的命名参数也需要一同作修改，否则会抛出：`Uncaught Error: Unknown named parameter` 的错误
-                         
-## 字符串 [str_starts_with()](https://wiki.php.net/rfc/add_str_starts_with_and_ends_with_functions)、 [str_ends_with()](https://wiki.php.net/rfc/str_contains)、[str_contains()](https://wiki.php.net/rfc/add_str_starts_with_and_ends_with_functions) 函数
+
+## 新的内建函数
+
+### 字符串 [str_starts_with()](https://wiki.php.net/rfc/add_str_starts_with_and_ends_with_functions)、 [str_ends_with()](https://wiki.php.net/rfc/str_contains)、[str_contains()](https://wiki.php.net/rfc/add_str_starts_with_and_ends_with_functions) 函数
 
 
 ```php
@@ -195,7 +197,7 @@ $url = 'https://example.com?foo=bar';
 var_dump(str_contains($url, '?')); // true
 ```
 
-## [get_debug_type 函数](https://wiki.php.net/rfc/get_debug_type)
+### [get_debug_type 函数](https://wiki.php.net/rfc/get_debug_type)
 
 `get_debug_type` 函数返回给定变量的数据类型。 下面是跟 `gettype` 函数返回的数据类型对比：
 
