@@ -293,3 +293,58 @@ $sam = new User;
 
 $joe->makeFriendsWith(null);
 ```
+                     
+## [Attributes 注解](https://www.php.net/manual/zh/language.attributes.overview.php) 
+
+注解功能提供了代码中的声明部分都可以添加结构化、机器可读的元数据的能力， 注解的目标可以是类、方法、函数、参数、属性、类常量。 
+
+通过 [反射 API](https://www.php.net/manual/zh/book.reflection.php) 可在运行时获取注解所定义的元数据。
+
+因此注解可以成为直接嵌入代码的配置式语言。
+
+
+```php
+<?php
+#[Attribute]
+class ApplyMiddleware
+{
+    public function __construct(private string $middleware)
+    {
+        //
+    }
+    public function getMiddleware() : string
+    {
+        return $this->middleware;
+    }
+}
+
+
+#[ApplyMiddleware('class')]
+class MyController
+{
+    #[ApplyMiddleware('property')]
+    protected $myProperty;
+
+
+    #[ApplyMiddleware('method')]
+    public function index() {}
+}
+
+$controller      = new MyController;
+$reflectionClass = new ReflectionClass($controller);
+
+// 类
+$attributes      = $reflectionClass->getAttributes(ApplyMiddleware::class);
+$middleware      = $attributes[ 0 ]?->newInstance()->getMiddleware();
+var_dump($middleware); // string(5) "class"
+
+// 方法
+$attributes      = $reflectionClass->getMethod('index')->getAttributes();
+$middleware = $attributes[0] ?->newInstance()->getMiddleware();
+var_dump($middleware); // string(6) "method"
+
+// 属性
+$attributes = $reflectionClass->getProperty('myProperty')->getAttributes();
+$middleware = $attributes[0]?->newInstance()->getMiddleware();
+var_dump($middleware); // string(8) "property"
+```
