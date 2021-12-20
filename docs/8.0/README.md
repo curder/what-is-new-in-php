@@ -246,9 +246,17 @@ var_dump($dispatcher);
 
 class User
 {
-    public function makeFriendsWith(User|null $user) // 联合类型声明
+    protected User|null $user; // 可以在定义类属性时定义对应属性类型为联合类型
+
+    public function makeFriendsWith(User|null $user) // 联合类型声明,在php8之前不允许这样定义参数类型
     {
+        $this->user = $user;
         var_dump('Yay friends');
+    }
+
+    public function getFirends() : ?User
+    {
+        return $this->user;
     }
 }
 
