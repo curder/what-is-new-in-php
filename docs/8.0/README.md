@@ -227,46 +227,27 @@ var_dump(get_debug_type($object), gettype($object)); // string(4) "User" 、stri
                                       
 ## [Weak Map 类](https://wiki.php.net/rfc/weak_maps)
 
+Weak map 允许存储链接到对象的任意数据，而不会泄漏任何内存。
 
 ```php
 <?php
-interface Event {}
 
-class SomeEvent implements Event {}
+class User {}
 
-class AnotherEvent implements Event {}
+$map = new WeakMap();
 
-class Dispatcher
-{
-    protected WeakMap $dispatchCount;
+$user = new User();
+$map[$user]  = [1, 2, 3];
 
-    public function __construct()
-    {
-        $this->dispatchCount = new WeakMap;
-    }
-    public function dispatch(Event $event)
-    {
-        if (!isset($this->dispatchCount[$event])) {
-            $this->dispatchCount[$event] = 0;
-        }
+var_dump(count($map)); // int(1)
 
-        $this->dispatchCount[$event] ++;
-    }
-}
+unset($user);
 
-$dispatcher = new Dispatcher;
-
-$event = new SomeEvent;
-
-$dispatcher->dispatch($event);
-$dispatcher->dispatch($event);
-
-$anotherEvent = new AnotherEvent;
-$dispatcher->dispatch($anotherEvent);
-
-var_dump($dispatcher);
+var_dump(count($map)); // int(0)
 ```
-                              
+
+[更多相关查看这里](https://php.watch/versions/8.0/weakmap)
+
 ## [联合类型](https://www.php.net/releases/8.0/zh.php#union-types)
 
 相较于以前的 PHPDoc 声明类型的组合，现在可以用原生支持的联合类型声明取而代之，并在运行时得到校验。
