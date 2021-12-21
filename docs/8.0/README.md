@@ -284,7 +284,7 @@ class User
         var_dump('Yay friends');
     }
 
-    public function getFirends() : ?User
+    public function getFriends() : ?User
     {
         return $this->user;
     }
