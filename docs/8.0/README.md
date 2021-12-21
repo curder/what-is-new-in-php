@@ -372,4 +372,31 @@ $condition || throw new Exception();
 $condition and throw new Exception();
 $condition or throw new Exception();
 ```
+              
+## [无变量捕捉](https://php.watch/versions/8.0/catch-exception-type)
+
+PHP 8.0 及更高版本允许使用 try/catch 块，其中 catch() 语句不会将异常本身捕获到变量中。
+
+在 PHP 8.0 之前，典型的 PHP try/catch 块必须在 catch 语句中捕获异常：
+
+```php {4}
+try {
+  // try something
+}
+catch (\InvalidArgumentException $ex) { // "$ex" is required
+  // handle the exception
+}
+```
+
+有时，异常类型（如`\InvalidArgumentException`）足以决定异常的处理方式，并将异常捕获到一个变量中（如上例中的$ex），PHP 8.0 允许删除异常捕获。
+
+```php {3}
+try {
+    throw new InvalidArgumentException();
+} catch (InvalidArgumentException) {
+    echo "Something went wrong.";
+}
+```
+
+确保在程序中捕获的异常类型的粒度足以传达异常的含义。 例如，如果打算记录事件，则在不捕获异常的情况下捕获通配符 `\Exception` 或 `\Throwable` 可能不是一个好习惯。
 
