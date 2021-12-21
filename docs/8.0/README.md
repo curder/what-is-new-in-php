@@ -351,7 +351,7 @@ $middleware = $attributes[0]?->newInstance()->getMiddleware();
 var_dump($middleware); // string(8) "property"
 ```
 
-## [throw 作为表达式])(https://wiki.php.net/rfc/throw_expression)
+## [throw 作为表达式](https://wiki.php.net/rfc/throw_expression)
 
 允许在接受表达式的任何上下文中使用 `throw` 关键字。
 
