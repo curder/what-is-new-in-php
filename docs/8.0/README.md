@@ -400,3 +400,18 @@ try {
 
 确保在程序中捕获的异常类型的粒度足以传达异常的含义。 例如，如果打算记录事件，则在不捕获异常的情况下捕获通配符 `\Exception` 或 `\Throwable` 可能不是一个好习惯。
 
+## [新的混合伪类型](https://php.watch/versions/8.0/mixed-type)
+       
+当函数的参数和返回值没有定义时，默认为 `mixed` 类型的返回值。
+
+`mixed` 等同于联合类型 `string|int|float|bool|null|array|object|callable|resource`
+
+```php {1}
+function dump(mixed $var) {
+    var_dump($var);
+}
+
+dump('test');
+```
+
+> 注意：`mixed` 不能跟其他类型一起组合成联合类型。例如：`function (mixed|FooClass $bar): int|mixed {}` 会抛出错误：`Fatal error: Type mixed can only be used as a standalone type in ... on line ...`
