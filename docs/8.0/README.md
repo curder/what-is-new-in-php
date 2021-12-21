@@ -415,3 +415,25 @@ dump('test');
 ```
 
 > 注意：`mixed` 不能跟其他类型一起组合成联合类型。例如：`function (mixed|FooClass $bar): int|mixed {}` 会抛出错误：`Fatal error: Type mixed can only be used as a standalone type in ... on line ...`
+
+
+## [新 Stringable 接口](https://php.watch/versions/8.0/stringable)
+
+```php
+class User
+{
+    public function __toString() : string
+    {
+        return 'The username';
+    }
+    public function passString(string|Stringable $string): string|Stringable
+    {
+        return $string;
+    }
+}
+var_dump(
+    (string) (new User), // string(12) "The username"
+    (new User) instanceof Stringable, // bool(true) 
+    (new User)->passString(new User) // object(User)#2 (0) {}
+);
+```
