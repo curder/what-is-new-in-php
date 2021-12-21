@@ -350,3 +350,26 @@ $attributes = $reflectionClass->getProperty('myProperty')->getAttributes();
 $middleware = $attributes[0]?->newInstance()->getMiddleware();
 var_dump($middleware); // string(8) "property"
 ```
+
+## [throw 作为表达式])(https://wiki.php.net/rfc/throw_expression)
+
+允许在接受表达式的任何上下文中使用 `throw` 关键字。
+
+```php
+<?php
+// callable
+$callable = fn() => throw new Exception();
+
+// $value 的值仅不为null
+$value = $nullableVariable ?? throw new InvalidArgumentException();
+
+// $value 的值仅为true
+$value = $falsableValue ?: throw new InvalidArgumentException();
+
+// 跟使用if表达式一样，让代码变得简洁
+$condition && throw new Exception();
+$condition || throw new Exception();
+$condition and throw new Exception();
+$condition or throw new Exception();
+```
+
