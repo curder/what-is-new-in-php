@@ -463,3 +463,17 @@ $user = new User(
 
 function() use ($foo, $bar,) {}
 ```
+             
+## [ValueError 错误类型](https://php.watch/versions/8.0/ValueError)
+
+
+PHP 8 引入了一种称为 `ValueError` 的新型异常。
+
+```php {4}
+try {
+    $random_element = array_rand([1, 2, 3,], 4); // 函数传递错误的参数
+    var_dump($random_element);
+} catch (ValueError) {
+    // Something went error
+}
+```
