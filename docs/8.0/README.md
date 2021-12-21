@@ -437,3 +437,29 @@ var_dump(
     (new User)->passString(new User) // object(User)#2 (0) {}
 );
 ```
+
+## [尾随逗号](https://php.watch/versions/8.0/trailing-comma-parameter-use-list)
+
+PHP 8.0 语法允许在参数列表和闭包使用列表中留下尾随逗号。
+
+```php{8,16}
+<?php
+class User
+{
+    public function __construct(
+        public string $name,
+        protected int $age,
+        private string $email,
+        public bool $is_admin = false,
+    ) {}
+}
+
+$user = new User(
+    'Curder',
+    30,
+    'q.curder@gmail.com',
+    true,
+);
+
+function() use ($foo, $bar,) {}
+```
