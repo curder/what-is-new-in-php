@@ -31,7 +31,7 @@ function query($fields, $filter, SortOrder $order = SortOrder::ASC) {
               
 ### 高级用法
 
-```bash
+```php
 <?php
 enum UserStatus: string
 {
