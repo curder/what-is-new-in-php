@@ -79,7 +79,7 @@ switch (get_class($object)) {
 class Conversation {}
 $object = new Conversation;
 
-return match (get_class($object)) {
+return match ($object::class) {
     'Conversation' => 'stated_conversation',
     'Reply' => 'replied_to_conversation',
     'Comment' => 'commented_to_conversation',
