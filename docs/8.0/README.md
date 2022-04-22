@@ -137,8 +137,6 @@ return match($fruit) {
 };
 ```
 
-
-
 ### 匹配多个
 
 匹配表达式臂可以包含多个用逗号分隔的表达式。相当于逻辑 OR，并且是具有相同右侧的多个匹配的简写。
@@ -198,16 +196,12 @@ return match($meal) {
 <?php
 class User
 {
-    public function __construct(protected string $name)
-    {
-    }
+    public function __construct(protected string $name) { }
 }
 
 class Plan
 {
-    public function __construct(protected string $name = 'monthly')
-    {
-    }
+    public function __construct(protected string $name = 'monthly') { }
 }
 
 class Signup
@@ -219,9 +213,7 @@ class Signup
     public function __construct(
         protected User $user,
         protected Plan $plan
-    )
-    {
-    }
+    ) { }
 }
 
 $user   = new User('jone_doe');
@@ -236,11 +228,7 @@ var_dump($signup);
 
 ```php
 <?php
-class Conversation
-{
-    //
-}
-
+class Conversation { }
 $object = new Conversation;
 var_dump($object::class, get_class($object)); // "Conversation" "Conversation"
 ```
@@ -256,9 +244,6 @@ var_dump($object::class, get_class($object)); // "Conversation" "Conversation"
                                                  
 
 ```php
-<?php
-
-
 class Invoice
 {
     public function __construct(
@@ -272,15 +257,12 @@ class Invoice
     }
 }
 
-$invoice = new Invoice(
+return new Invoice(
     description: 'Customer installation',
     total: 10000,
     date: new DateTime,
     paid: true,
 );
-
-
-var_dump($invoice);
 ```
 
 > 命名参数有一个问题是当我们修改了函数命名的时候，则在调用函数的时候的命名参数也需要一同作修改，否则会抛出：`Uncaught Error: Unknown named parameter` 的错误
