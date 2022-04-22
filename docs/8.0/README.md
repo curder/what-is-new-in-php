@@ -46,39 +46,149 @@ var_dump($user->profile()?->employment() ?? 'Not Provider');
 - Match 分支仅支持单行，它不需要一个 `break;` 语句。
 - Match 使用严格比较。
 
-```php
-<?php
-class Conversation
-{
-    //
-}
 
+<CodeGroup>
+  <CodeGroupItem title="Switch">
+
+```php
+class Conversation {}
 $object = new Conversation;
 
-//switch (get_class($object)) {
-//    case 'Conversation':
-//        $type = 'started_conversation';
-//        break;
-//
-//    case 'Reply':
-//        $type = 'replied_to_conversation';
-//        break;
-//
-//    case 'Comment':
-//        $type = 'commented_to_conversation';
-//        break;
-//}
+switch (get_class($object)) {
+    case 'Conversation':
+        $type = 'started_conversation';
+        break;
 
-// 使用match表达式简化写法
-$type = match (get_class($object)) {
+    case 'Reply':
+        $type = 'replied_to_conversation';
+        break;
+
+    case 'Comment':
+        $type = 'commented_to_conversation';
+        break;
+}
+
+// started_conversation
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="Match" active>
+
+```php
+class Conversation {}
+$object = new Conversation;
+
+return match (get_class($object)) {
     'Conversation' => 'stated_conversation',
     'Reply' => 'replied_to_conversation',
     'Comment' => 'commented_to_conversation',
 };
 
-echo $type;
+// stated_conversation
 ```
-                                                       
+
+  </CodeGroupItem>
+</CodeGroup>
+
+### 强类型检查
+
+与 `switch` 语句不同，比较是检查 `===` 而不是弱相等检查 `==`。
+
+```php
+$php = 8.0;
+
+return match($php) {
+    '8.0' => 'No Match 😭',
+    8.0 => 'Matched 🥰',
+}
+
+// Matched 🥰
+```
+
+### 未匹配错误
+
+如果未找到匹配项，则会抛出 `UnhandledMatchError`。如果愿意，可以通过 try/catch 捕获错误。
+
+```php
+$fruit = '🍔';
+
+return match($fruit) {
+    '🍎' => 'Fruit is an apple',
+    '🍌' => 'Fruit is a banana',
+    '🍐' => 'Fruit is a pear',
+};
+
+// ❌ Fatel error
+// Uncaught UnhandledMatchError
+```
+
+### 匹配默认值
+不必从默认模式返回值。相反，可能会在未找到匹配项时引发自定义错误或异常。
+
+```php
+$fruit = '🍔';
+
+return match($fruit) {
+    '🍎' => 'Fruit is an apple',
+    '🍌' => 'Fruit is a banana',
+    '🍐' => 'Fruit is a pear',
+    default => throw new InvalidFruitException,
+};
+```
+
+
+
+### 匹配多个
+
+匹配表达式臂可以包含多个用逗号分隔的表达式。相当于逻辑 OR，并且是具有相同右侧的多个匹配的简写。
+
+```php
+$food = '🍎';
+
+return match ($food) {
+    '🍎', '🍌', '🍊' => 'Food is a Fruit',
+    '🍔' => 'Food is a burger',
+    '🍣' => 'Food is a sushi',
+}
+
+// Food is a Fruit
+```
+
+### 范围匹配
+通过使用 `true` 作为匹配的表达式，可以使用匹配表达式来处理条件情况。
+
+此外，还有默认值，此模式匹配以前未匹配的任何内容。
+
+```php
+$age = 23;
+
+return match (true) {
+    $age >= 65 => 'Senior',
+    $age >= 25 => 'Adult',
+    $age >= 18 => 'Young adult',
+    default => 'Child',
+}
+
+// Young adult
+```
+
+### 匹配数组
+
+匹配表达式也可以匹配数组。
+
+```php
+$meal = ['🍔', '🍟'];
+
+return match($meal) {
+    ['🍔', '🍕'] => 'Burger and pizza',
+    ['🍔', '🥙'] => 'Burger and tacos',
+    ['🍔', '🍟'] => 'Burger and fries',
+}
+
+// Burger and fries
+```
+
 
 ## [构造器属性提升](https://www.php.net/releases/8.0/zh.php#constructor-property-promotion)
 
@@ -171,8 +281,6 @@ $invoice = new Invoice(
 
 
 var_dump($invoice);
-
-
 ```
 
 > 命名参数有一个问题是当我们修改了函数命名的时候，则在调用函数的时候的命名参数也需要一同作修改，否则会抛出：`Uncaught Error: Unknown named parameter` 的错误
