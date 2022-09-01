@@ -162,3 +162,49 @@ class Service
 }
 ```
 
+## [类的只读属性](https://www.php.net/releases/8.1/zh.php#readonly_properties)
+
+只读属性不能在初始化后再对其进行更改。
+
+```php
+<?php
+
+// 7.4 <= PHP < 8.1
+class Project {
+    protected string $uuid;
+    
+    public function __construct(string $uuid)
+    {
+        $this->uuid = $uuid;
+    }
+
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
+}
+
+$project = new Project('xx');
+
+print_r($project->getUuid());
+```
+
+在之前的 PHP 版本中，如果要保护类属性不被外部重新赋值，需要将类属性设置为 `protected`，然后在类中定义一个公开方法返回这个私有变量。
+
+在 PHP 8.1 之后的版本中添加了一个关键字 `readonly` 来修饰变量，只读：
+
+```php
+<?php
+
+// PHP > 8.1
+class Project {
+    public function __construct(public readonly string $uuid)
+    {
+    }
+}
+
+$project = new Project('xx');
+
+print_r($project->uuid);
+$project->uuid = 'xxx'; // Cannot modify readonly property Project::$uuid
+```
