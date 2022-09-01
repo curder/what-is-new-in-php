@@ -7,7 +7,8 @@ sidebar: auto
 
 ## [枚举](https://www.php.net/releases/8.1/zh.php#enumerations)
 
-在 PHP 中， 枚举是一种特殊类型的对象。Enum 本身是一个类（Class）， 它的各种条目（case）是这个类的单例对象，意味着也是个有效对象 —— 包括类型的检测，能用对象的地方，也可以用它。
+在 PHP 中， 枚举是一种特殊类型的对象。Enum 本身是一个类（Class）， 它的各种条目（case）是这个类的单例对象，意味着也是个有效对象
+—— 包括类型的检测，能用对象的地方，也可以用它。
 
 最常见的枚举例子是内置的 boolean 类型， 该枚举类型有两个有效值 true 和 false。 Enum 使开发者能够任意定义出用户自己的、足够健壮的枚举。
 
@@ -27,8 +28,9 @@ function query($fields, $filter, SortOrder $order = SortOrder::ASC) {
 ?>
 ```
 
-> 由于确保 `$order` 不是 `SortOrder::ASC` 就是 `SortOrder::DESC`，所以 `query()` 函数能安全处理。 因为其他任意值都会导致 `TypeError`， 所以不需要额外的错误检查。
-              
+> 由于确保 `$order` 不是 `SortOrder::ASC` 就是 `SortOrder::DESC`，所以 `query()` 函数能安全处理。
+> 因为其他任意值都会导致 `TypeError`， 所以不需要额外的错误检查。
+
 ### 高级用法
 
 ```php
@@ -66,8 +68,42 @@ foreach (UserStatus::cases() as $case) {
 // UserStatus::Pending === UserStatus::tryFrom('P'); // 或者通过 tryFrom 静态方法获取枚举实例，当值不存在时会返回NULL
 ```
 
-> 用户的状态是 `UserStatus::Pending`、 `UserStatus::Active`、 `UserStatus::Suspended`、 `UserStatus::CanceledByUser` 中的一个，具有独占性。 函数可以根据 `UserStatus` 设置参数类型，仅支持这四种值。
-> 
+> 用户的状态是 `UserStatus::Pending`、 `UserStatus::Active`、 `UserStatus::Suspended`、 `UserStatus::CanceledByUser`
+> 中的一个，具有独占性。 函数可以根据 `UserStatus` 设置参数类型，仅支持这四种值。
+>
 > 所有四个值都有一个 `label()` 方法，返回了人类可读的字符串。
-> 
+>
 > 它独立于等同于标量的“机器名”。 机器名用于类似数据库字段或 `HTML` 选择框这样的地方。
+
+## [字符串键数组解包](https://www.php.net/releases/8.1/zh.php#array_unpacking_support_for_string_keyed_arrays)
+
+PHP 7.4之后版本中已经添加通过扩展运算符对数组内部进行解包支持，但前提是数组具有整数键。
+
+```php
+<?php
+
+# PHP > 7.4
+[...[1,2,3], ...[4,5,6]];
+```
+
+现在也可以使用字符串键解包数组。如下：
+
+```php
+<?php
+
+# PHP < 8.1
+$attributes = ['title' => 'My Blog', 'body' => 'My blog body'];
+$additional = ['category_id' => 1];
+
+array_merge($attributes, $additional); // ['title' => 'My Blog', 'body' => 'My blog body', 'category_id' => 1]
+```
+
+```php
+<?php
+
+# PHP 8.1
+$attributes = ['title' => 'My Blog', 'body' => 'My blog body'];
+$additional = ['category_id' => 1];
+
+[...$attributes, ...$additional];
+```
