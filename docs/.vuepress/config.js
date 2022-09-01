@@ -1,12 +1,3 @@
-const {readdirSync} = require('fs');
-
-const getFiles = (dir, filteredReadme = true) => {
-    return readdirSync(`docs/${dir}`, 'utf-8')
-        .filter((f) => filteredReadme ? !f.endsWith('README.md') : true)
-        .filter((f) => f.endsWith('.md'))
-        .map(f => `/${dir}/${f}`)
-}
-
 module.exports = {
     base: "/what-is-new-in-php/",
     lang: 'zh-CN',
