@@ -107,3 +107,20 @@ $additional = ['category_id' => 1];
 
 [...$attributes, ...$additional];
 ```
+
+## [返回类型 `gnever`](https://www.php.net/releases/8.1/zh.php#never_return_type)
+
+使用 `never` 类型声明的函数或方法表示它不会返回值。
+
+```php
+<?php
+
+# PHP 8.1
+function redirect(string $uri): never
+{
+    header('Location: ' . $uri);
+    return 'some code'; // Fatal error: A never-returning function must not return 这里不应该有 return 语句
+}
+```
+
+> 如果在之前版本上面的代码不会抛出异常。
