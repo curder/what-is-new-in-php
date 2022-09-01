@@ -108,7 +108,7 @@ $additional = ['category_id' => 1];
 [...$attributes, ...$additional];
 ```
 
-## [返回类型 `gnever`](https://www.php.net/releases/8.1/zh.php#never_return_type)
+## [返回类型 `never`](https://www.php.net/releases/8.1/zh.php#never_return_type)
 
 使用 `never` 类型声明的函数或方法表示它不会返回值。
 
@@ -124,3 +124,41 @@ function redirect(string $uri): never
 ```
 
 > 如果在之前版本上面的代码不会抛出异常。
+
+
+## [构造函数初始化器](https://www.php.net/releases/8.1/zh.php#new_in_initializers)
+
+```php
+<?php
+// 7.4 <= PHP < 8.1
+
+interface Logger { }
+
+class NullLogger implements Logger { }
+
+class Service
+{
+    private Logger $logger;
+
+    public function __construct(?Logger $logger = null) {
+        $this->logger = $logger ?? new NullLogger();
+    }
+}
+```
+
+对象现在可以用作默认参数值、静态变量和全局常量以及属性参数。
+
+```php
+<?php
+
+// PHP > 8.1
+interface Logger { }
+
+class NullLogger implements Logger { }
+
+class Service
+{
+    public function __construct(private Logger $logger = new NullLogger) { }
+}
+```
+
