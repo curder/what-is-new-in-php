@@ -44,7 +44,12 @@ enum UserStatus: string
 
     public function label(): string
     {
-        return match($this) {
+        return static::getLabel($this);
+    }
+
+    public static function getLabel(self $value): string
+    {
+        return match($value) {
             self::Pending => 'Pending',
             self::Active => 'Active',
             self::Suspended => 'Suspended',
@@ -53,10 +58,11 @@ enum UserStatus: string
     }
 }
 
-UserStatus::Pending->name     // 获取枚举名
-UserStatus::Pending->value    // 获取枚举值, 比如例子中的字符串
-UserStatus::cases()           // 获取枚举列表
-UserStatus::Pending->label()  // 调用枚举方法获取对应返回值
+UserStatus::Pending->name;                  // 获取枚举名
+UserStatus::Pending->value;                 // 获取枚举值, 比如例子中的字符串
+UserStatus::cases();                        // 获取枚举列表
+UserStatus::Pending->label();               // 调用枚举方法获取对应返回值
+UserStatus::getLabel(UserStatus::Pending);  // 枚举包含静态方法
 
 // 渲染下拉选项结构
 foreach (UserStatus::cases() as $case) {
