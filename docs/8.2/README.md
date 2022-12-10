@@ -181,7 +181,7 @@ function alwaysReturnNull(): null { return null; }
 
 现在同样适用于 `true` 或者 `false`。
 
-## 新的随机扩展
+## 新的随机扩展 Randomizer
 
 PHP 8.2 内置了一个随机类 `Randomizer`，它增加了一种更适合面向对象的方式来处理随机数生成和其他随机化操作。
 
@@ -314,7 +314,7 @@ Stack trace:
 */
 ```
 
-## DateTime 更改
+## DateTime 类方法返回值类型更改
 
 在 PHP 8.2 中，这些方法返回值类型更改如下：
 
@@ -347,7 +347,7 @@ Deprecated: Function utf8_decode() is deprecated
 
 建议改用 `mb_convert_encoding()`。
 
-## 弃用动态属性（和新的#[AllowDynamicProperties] 属性）
+## 弃用动态属性（添加新#[AllowDynamicProperties] 属性）
 
 动态属性在 PHP 8.2 中被弃用。
 
