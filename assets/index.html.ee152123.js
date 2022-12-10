@@ -1,4 +1,4 @@
-import{_ as o,r as t,o as r,c as i,w as e,a as l,b as n,d as s}from"./app.d7d4b45a.js";const u={},p=n("div",{class:"language-bash ext-sh line-numbers-mode"},[n("pre",{class:"language-bash"},[n("code",null,[n("span",{class:"token function"},"yarn"),s(),n("span",{class:"token comment"},"# install in your project"),s(`
+import{_ as o,r as t,o as r,c as i,w as e,a as l,b as n,d as s}from"./app.64ebf7ae.js";const u={},p=n("div",{class:"language-bash ext-sh line-numbers-mode"},[n("pre",{class:"language-bash"},[n("code",null,[n("span",{class:"token function"},"yarn"),s(),n("span",{class:"token comment"},"# install in your project"),s(`
 
 `),n("span",{class:"token function"},"yarn"),s(),n("span",{class:"token function"},"watch"),s(),n("span",{class:"token comment"},"# start writing"),s(`
 
