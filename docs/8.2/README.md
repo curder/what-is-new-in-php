@@ -23,29 +23,29 @@ PHP 8.2
 
 这样做的好处是，每当我们添加新属性时，都不用在对应类的属性设置为只读。
 
-例如，在 PHP 8.1 中，必须编写这段乏味的代码来将所有类属性声明为 `readonly`：
+例如，在 PHP 8.1 中，需要在所有类属性上添加 `readonly` 关键字：
 
 ```php
 <?php
 
-class MyClass
+class Post
 {
-    public readonly string $myValue;
-    public readonly int $myOtherValue;
-    public readonly string $myAnotherValue;
-    public readonly int $myYetAnotherValue;
+    public readonly string $title;
+    public readonly string $user;
+    public readonly string $body;
+    public readonly DateTime $published_at;
 }
 ```
 
 使用 PHP 8.2，可以这样写：
 
 ```php
-readonly class MyClass
+readonly class Post
 {
-public string $myValue;
-public int $myOtherValue;
-public string $myAnotherValue;
-public int $myYetAnotherValue;
+    public string $title;
+    public string $user;
+    public string $body;
+    public DateTime $published_at;
 }
 ```
 
@@ -54,13 +54,13 @@ public int $myYetAnotherValue;
 ```php
 <?php
 // 定义抽象类
-abstract readonly class Foo
+abstract readonly class Post
 {
     //
 }
 
 // 定义终极类
-final readonly class Bar
+final readonly class Post
 {
     //
 }
@@ -95,7 +95,7 @@ readonly class Type
 }
 ```
 
-此外，不能 `readonly` 为某些 PHP 功能声明：
+此外，某些 PHP 功能声明不能使用 `readonly` 关键字修饰，它们分别是：
 
 - 枚举 `enum` （因为它不能包含任何属性）
 - `Trait`
@@ -136,8 +136,7 @@ $person->name = 'Curder'; // Fatal error: Uncaught Error: Cannot create dynamic 
 PHP 8.2 支持不相交范式 (DNF) 类型——现在可以组合[联合类型 (PHP 8.0)](https://php.watch/versions/8.0/union-types)
 和[交集类型 (PHP 8.1)](https://php.watch/versions/8.1/intersection-types)，从而可以声明精确且富有表现力的参数、返回和属性类型。
 
-DNF
-类型允许我们结合[并集](https://www.php.net/manual/zh/language.types.type-system.php#language.types.type-system.composite.union)
+DNF类型允许我们结合[并集](https://www.php.net/manual/zh/language.types.type-system.php#language.types.type-system.composite.union)
 和[交集](https://www.php.net/manual/zh/language.types.type-system.php#language.types.type-system.composite.intersection)
 类型，遵循一个严格的规则：当结合并集和交集类型时，交集类型必须用括号分组。
 
@@ -327,6 +326,7 @@ DateTimeImmutable::createFromMutable(): static
 ```
 
 之前的返回值为 `DateTime` 和 `DateTimeImmutable`：
+
 ```php
 <?php
 
@@ -346,9 +346,6 @@ Deprecated: Function utf8_decode() is deprecated
 ```
 
 建议改用 `mb_convert_encoding()`。
-
-
-
 
 ## 弃用动态属性（和新的#[AllowDynamicProperties] 属性）
 
