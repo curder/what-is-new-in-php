@@ -171,6 +171,26 @@ return match (true) {
 // Young adult
 ```
 
+### 匹配是否为实例
+
+```php {4}
+public function __construct(protected ?Category $category = null) { }
+
+match(true) {
+    $this->category instanceof Category => $query->where('parent_id', $this->category->id),
+    default => $query->whereIsRoot()
+};
+```
+
+### 匹配布尔值
+
+```php
+match(request()->has('sort')) {
+    true  => $query,
+    false => $query->defaultOrder(),
+};
+```
+
 ### 匹配数组
 
 匹配表达式也可以匹配数组。
