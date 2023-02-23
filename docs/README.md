@@ -5,7 +5,7 @@ heroText: What's New in PHP
 tagline:  Record the new features of PHP version updates
 
 
-footer: MIT Licensed |Copyright ©2021-present Curder
+footer: MIT Licensed |Copyright ©2023-present Curder
 ---
 
 
