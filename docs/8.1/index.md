@@ -5,6 +5,10 @@ sidebar: auto
 
 # PHP 8.1
 
+PHP 8.1 发布于 2021-11-25，是 PHP 语言的一个主版本更新。
+
+它包含了许多新功能，包括枚举、只读属性、First-class 可调用语法、纤程、交集类型和性能改进等。
+
 ## [枚举](https://www.php.net/releases/8.1/zh.php#enumerations)
 
 在 PHP 中， 枚举是一种特殊类型的对象。Enum 本身是一个类（Class）， 它的各种条目（case）是这个类的单例对象，意味着也是个有效对象

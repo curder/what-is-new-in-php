@@ -5,6 +5,10 @@ sidebar: auto
 
 # PHP 8.0
 
+PHP 8.0 发布于 2020-11-26，是 PHP 语言的一个主版本更新，**当前仅安全修复**。
+
+它包含了很多新功能与优化项， 包括命名参数、联合类型、注解、构造器属性提升、match 表达式、nullsafe 运算符、JIT，并改进了类型系统、错误处理、语法一致性。
+
 ## [Nullsafe 运算符](https://www.php.net/releases/8.0/zh.php#nullsafe-operator)
 
 现在可以用新的 nullsafe 运算符链式调用，而不需要条件检查 null。 如果链条中的一个元素失败了，整个链条会中止并认定为 Null。
