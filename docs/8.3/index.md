@@ -1,0 +1,175 @@
+# PHP 8.3
+
+PHP 8.3 将在 2023-11-23 发布，主要包含以下新功能：
+
+常量类型定义、新增 `json_validate`函数、支持动态类常量和枚举成员的获取、`gc_status()` 返回额外的 GC 信息、`\Random\Randomizer` 类的新方法 `getBytesFromString`、新的 `\Random\Randomizer::getFloat()` 和 `nextFloat()` 方法、php ini 环境变量语法支持默认值、PHP CLI Lint 支持同时检查多个文件、`class_alias()` 支持为内置的 PHP 类添加别名、新的`stream_context_set_options` 函数。
+
+## 常量类型定义
+
+在 PHP 8.3 及更高版本中，类常量可以在 const 关键字之后声明类型：
+
+```php
+<?php
+
+class Playground
+{
+    public const int FORBIDDEN = 403;
+}
+```
+
+类常量中类型的目的是强制所有覆盖类常量的子类不更改常量的类型。
+
+如果使用与声明类常量不同的类型，则会出现 PHP 致命错误，比如：
+
+```php
+<?php
+
+class Playground
+{
+    public const string FORBIDDEN = 403;
+}
+
+# Fatal error: Cannot use int as value for class constant
+# playground::FORBIDDEN of type string
+```
+
+### 类 class
+
+```php
+<?php
+
+class Playground
+{
+    const int FORBIDDEN = 403; # 整型类型的公开的常量
+
+    protected const int NOT_FOUND = 404; # 整型类型的受保护的常量
+
+    final protected const int OK = 200; # 整形类型最终受保护的常量
+}
+```
+
+### Trait
+
+```php
+<?php
+
+trait Playground
+{
+    final protected const int OK = 200; # 整形类型最终受保护的常量
+}
+```
+
+### 接口 Interface
+
+```php
+<?php
+
+interface playground
+{
+    public const int OK = 200; # 整形类型公开的常量
+}
+```
+
+### 枚举 Enum
+
+```php
+<?php
+
+enum playground: int
+{
+    public const int OK = 200; # 整形类型公开的常量
+}
+```
+
+## `json_valide()` 函数
+
+PHP 8.3 添加了一个名为 `json_validate` 的新函数，无论给定字符串是有效的 JSON 字符串，该函数都会返回 `true` 或 `false`。
+
+```php
+<?php
+
+json_validate('[1, 2, 3]'); # true
+json_validate('[1, 2, 3]}'); # false
+```
+
+### 添加 flags 参数
+
+`json_validate` 函数接受其第三个参数 `$flags` 的标志位掩码。
+
+```php
+json_validate("[\"\xc1\xc1\", 1]"); # false
+json_validate("[\"\xc1\xc1\", 1]", flags: JSON_INVALID_UTF8_IGNORE); # true
+
+json_decode("[\"\xc1\xc1\", 1]", flags: JSON_INVALID_UTF8_IGNORE) # [ '', 1]
+```
+
+### 验证错误
+
+`json_validate()` 函数仅返回验证结果（布尔值），不会返回验证错误代码。现在可以通过 `json_last_error` 和 `json_last_error_msg` 函数可用于确定验证错误。
+
+```php
+<?php
+
+json_validate(""); # false
+
+json_last_error(); # 4
+json_last_error_msg(); # "Syntax error"
+```
+
+## 动态类常量和枚举成员的获取
+
+PHP 8.3 及更高版本支持使用变量名获取类常量和 Enum 对象。
+
+### 类常量
+
+```php
+<?php
+
+class Playground {
+    public const int FORBIDDEN = 403;
+}
+
+$const_name = 'FORBIDDEN';
+
+echo Playground::{$const_name}; # 403
+```
+
+在 PHP 8.3 之前，不允许使用 `ClassName::{$varName}` 语法访问类常量，并且会导致语法错误：
+```txt
+# Parse error: syntax error, unexpected identifier "FORBIDDEN", expecting
+```
+
+### 枚举常量
+
+```php
+enum Playground: int 
+{
+    case Forbidden = 403;
+}
+
+$enum_name = 'Forbidden';
+
+echo Playground::{$enum_name}->value; # 403
+```
+
+## `:class` 魔法常量
+
+`::class` 魔术常量，它返回 `Class`/`Enum` 的类名：
+
+```php
+class Playground {}
+$constant = 'class';
+
+echo Playground::{$constant}; # "Playground"
+```
+
+如果尝试使用返回除字符串之外的任何类型的表达式来获取类常量或 Enum 成员会导致 `TypeError` 异常。
+
+```php
+class Playground {}
+$constant = 123;
+
+echo Playground::{$constant}; 
+# "Fatal error: Uncaught TypeError: Cannot use value of type int as class constant name"
+
+```

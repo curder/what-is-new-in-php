@@ -9,6 +9,7 @@ export default defineConfig({
     themeConfig: {
         outline: {
             label: "章节导航",
+            level: "deep"
         },
         lastUpdated: {
             text: "上次更新",
@@ -52,6 +53,7 @@ export default defineConfig({
                     {text: '8.0', link: '/8.0/'},
                     {text: '8.1', link: '/8.1/'},
                     {text: '8.2', link: '/8.2/'},
+                    {text: '8.3', link: '/8.3/'},
                 ],
             },
         ],
