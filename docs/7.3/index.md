@@ -391,13 +391,13 @@ FastCGI 进程管理器也进行了更新，现在提供了新的方式来记录
 
 `TypeErrors` 用于整数和布尔值，用于打印其全名， 它已更改为 `int` 和 `bool`，以匹配代码中的类型提示。
 
-```text
+```txt
 Argument 1 passed to foo() must be of the type int/bool
 ```
 
 与PHP 7.2相比:
 
-```text
+```txt
 Argument 1 passed to foo() must be of the type
 integer/boolean
 ```
