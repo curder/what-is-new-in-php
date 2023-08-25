@@ -171,5 +171,34 @@ $constant = 123;
 
 echo Playground::{$constant}; 
 # "Fatal error: Uncaught TypeError: Cannot use value of type int as class constant name"
-
 ```
+
+## 额外的 GC 信息
+
+PHP的 `gc_status()` 函数返回PHP垃圾收集器的统计信息，例如GC是否正在运行、GC是否受到保护、缓冲区大小。
+
+```php
+print_r(gc_status());
+```
+在 PHP 8.3 之前 `gc_status` 函数返回一个如下结构的数组：
+
+| 字段          | 类型 | 描述                    |
+|-------------|----|-----------------------|
+| `runs`      | 整型 | 垃圾收集器运行的次数            |
+| `collected` | 整型 | 收集的对象数量               |
+| `threshold` | 整型 | 缓冲区中将触发垃圾收集的 root 的数量 |
+| `roots`     | 整型 | 当前缓冲区中当前 root 的数量     |
+
+在 PHP 8.3 中，`gc_status` 函数返回八个附加字段：
+
+| 字段                 | 类型  | 描述                                                                  |
+|--------------------|-----|---------------------------------------------------------------------|
+| `running`          | 布尔值 | 如果垃圾收集器正在运行，则为真，否则为假                                                |
+| `protected`        | 布尔值 | 如果垃圾收集器受到保护并且禁止添加 root，则为 true，否则为假                                 |
+| `full`             | 布尔值 | 如果垃圾收集器缓冲区大小超过 `GC_MAX_BUF_SIZE`，则为 `true`。当前设置为 0x40000000 (1024³) |
+| `buffer_size`      | 整型  | 当前垃圾收集器缓冲区大小                                                        |
+| `application_time` | 浮点型 | 总应用时间，以秒为单位（包括collector_time）                                       |
+| `collector_time`   | 浮点型 | 收集周期所花费的时间，以秒为单位（包括 destructor_time 和 free_time）                    |
+| `destructor_time`  | 浮点型 | 在循环收集期间执行析构函数所花费的时间（以秒为单位）                                          |
+| `free_time`        | 浮点型 | 在循环收集期间释放值所花费的时间（以秒为单位）                                             |
+
