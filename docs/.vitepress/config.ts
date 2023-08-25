@@ -7,13 +7,37 @@ export default defineConfig({
     description: 'Record the new features of PHP version updates',
     lastUpdated: true,
     themeConfig: {
+        outline: {
+            label: "章节导航",
+        },
+        lastUpdated: {
+            text: "上次更新",
+        },
+        returnToTopLabel: '返回顶部',
+        notFound: {
+            code: "404",
+            title: '找不到页面',
+            quote: '如果您继续寻找，最终可能会到达要去的地方。',
+            linkText: "返回首页",
+        },
+        editLink: {
+            pattern: "https://github.com/curder/what-is-noew-in-php/edit/master/docs/:path",
+            text: '编辑它'
+        },
+        socialLinks: [
+            {icon: 'github', link: 'https://github.com/curder/what-is-new-in-php'}
+        ],
+        footer: {
+            message: "MIT Licensed",
+            copyright: "2023-present Curder"
+        },
         nav: [
             {text: '首页', link: '/'},
             {
                 text: 'PHP 7',
                 activeMatch: '/7',
                 items: [
-                    {text: '7.0', link:'/7.0/'},
+                    {text: '7.0', link: '/7.0/'},
                     {text: '7.1', link: '/7.1/'},
                     {text: '7.2', link: '/7.2/'},
                     {text: '7.3', link: '/7.3/'},
