@@ -12,15 +12,15 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Node
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
         with:
-          node-version: '12.x'
+          node-version: 18
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
@@ -30,7 +30,7 @@ jobs:
         run: yarn install
 
       - name: Build Docs
-        run: yarn prod
+        run: yarn docs:build
 
       - name: Deployment
         uses: peaceiris/actions-gh-pages@v3

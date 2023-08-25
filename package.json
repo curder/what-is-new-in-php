@@ -5,11 +5,13 @@
   "repository": "git@github.com:curder/what-is-new-in-php.git",
   "author": "curder <q.curder@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "watch": "vuepress dev docs",
-    "prod": "vuepress build docs"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "vuepress": "^2.0.0-beta.39"
+    "vitepress": "^1.0.0-rc.4"
   }
 }
