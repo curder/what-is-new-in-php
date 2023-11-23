@@ -81,6 +81,45 @@ enum playground: int
 }
 ```
 
+## `#[Override]` 属性
+
+使用 `#[Override]` 属性标记方法表示知道该方法正在重写父方法，所以它唯一要做的就是表现出意图。
+
+```php
+abstract class Parent
+{
+    public function methodWithDefaultImplementation(): int
+    {
+        return 1;
+    }
+}
+
+final class Child extends Parent
+{
+    #[Override] //[!code ++]
+    public function methodWithDefaultImplementation(): int
+    {
+        return 2; // The overridden method
+    }
+} 
+```
+
+现在如果父类在某一时刻更改了其方法名称。
+
+```php
+abstract class Parent
+{
+    public function methodWithNewImplementation(): int
+    {
+        return 1;
+    }
+}
+```
+
+由于检测到不再覆盖任何父类内容，并且会抛出错误 `Child::methodWithDefaultImplementation()`。
+
+它基本上是说“我知道这个方法应该覆盖父方法，如果发生改变，请告诉我”。
+
 ## `json_valide()` 函数
 
 PHP 8.3 添加了一个名为 `json_validate` 的新函数，无论给定字符串是有效的 JSON 字符串，该函数都会返回 `true` 或 `false`。
