@@ -85,6 +85,23 @@ foreach (UserStatus::cases() as $case) {
 >
 > 它独立于等同于标量的“机器名”。 机器名用于类似数据库字段或 `HTML` 选择框这样的地方。
 
+### 判断值相等
+
+使用 `===` 操作符来判断枚举对象是否相等。
+
+```php
+<?php
+
+enum HttpStatusCode: int
+{
+    case Ok = 200;
+    case Created = 201;
+}
+
+var_dump(HttpStatusCode::Ok === HttpStatusCode::Created); // false
+var_dump(HttpStatusCode::Ok === HttpStatusCode::Ok); // true
+```
+
 ## [字符串键数组解包](https://www.php.net/releases/8.1/zh.php#array_unpacking_support_for_string_keyed_arrays)
 
 PHP 7.4之后版本中已经添加通过扩展运算符对数组内部进行解包支持，但前提是数组具有整数键。
