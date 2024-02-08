@@ -184,7 +184,7 @@ var_dump(new Collection([1, 2, 3])); // int(1) int(2) int(3)
 ```
 
 
-## [多错误处理](/docs/7.1/multi_catch_exception_handling.php)
+## [多错误处理](https://www.php.net/manual/en/migration71.new-features.php#migration71.new-features.mulit-catch-exception-handling)
 
 之前处理错误时，会使用 `try` `catch`关键字对各种错误进行处理，但是有时候我们的逻辑需要对一些错误做统一的处理，在php7.1中可以使用`|`来分割多个错误进行统一处理。
 
