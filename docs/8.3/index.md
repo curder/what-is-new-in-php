@@ -44,7 +44,7 @@ class Playground
 
     protected const int NOT_FOUND = 404; # 整型类型的受保护的常量
 
-    final protected const int OK = 200; # 整形类型最终受保护的常量
+    final protected const int OK = 200; # 整型类型最终受保护的常量
 }
 ```
 
@@ -55,7 +55,7 @@ class Playground
 
 trait Playground
 {
-    final protected const int OK = 200; # 整形类型最终受保护的常量
+    final protected const int OK = 200; # 整型类型最终受保护的常量
 }
 ```
 
@@ -66,7 +66,7 @@ trait Playground
 
 interface playground
 {
-    public const int OK = 200; # 整形类型公开的常量
+    public const int OK = 200; # 整型类型公开的常量
 }
 ```
 
@@ -77,7 +77,7 @@ interface playground
 
 enum playground: int
 {
-    public const int OK = 200; # 整形类型公开的常量
+    public const int OK = 200; # 整型类型公开的常量
 }
 ```
 
