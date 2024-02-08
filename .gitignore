@@ -33,4 +33,5 @@ book.mobi
 .cache
 
 docs/.vitepress/cache
+docs/.vitepress/dist
 *.php
