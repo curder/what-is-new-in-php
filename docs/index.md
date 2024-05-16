@@ -18,7 +18,7 @@ features:
   - title: PHP 7.2
     details: 对象类型提示、抽象函数重写
   - title: PHP 7.3
-    details: 灵活的heredocs
+    details: 灵活的 heredocs
   - title: PHP 7.4
     details: 类型化属性、短闭包、空合并运算符
   - title: PHP 8.0
@@ -29,4 +29,6 @@ features:
     details: “只读”类、“true”类型、独立的“null”和“false”
   - title: PHP 8.3
     details: “只读”类、新json_validate()函数、Randomizer补充、堆栈溢出检测
+  - title: PHP 8.4
+    details: Property Hooks、new 不带括号、新 DOM HTML5 支持
 ---

@@ -54,6 +54,7 @@ export default defineConfig({
                     {text: '8.1', link: '/8.1/'},
                     {text: '8.2', link: '/8.2/'},
                     {text: '8.3', link: '/8.3/'},
+                    {text: '8.4', link: '/8.4/'},
                 ],
             },
         ],

@@ -8,3 +8,5 @@
 - [What's New in PHP 8.0](./docs/8.0/index.md)
 - [What's New in PHP 8.1](./docs/8.1/index.md)
 - [What's New in PHP 8.2](./docs/8.2/index.md)
+- [What's New in PHP 8.3](./docs/8.3/index.md)
+- [What's New in PHP 8.4](./docs/8.4/index.md)
