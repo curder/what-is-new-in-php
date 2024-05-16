@@ -5,17 +5,15 @@ sidebar: auto
 
 # PHP 8.2
 
-PHP 8.2 发布于 2022-12-08，是 PHP 语言的重大更新。
+PHP 8.2 发布于 2022 年 12 月 08 日，安全支持截止于 2026 年 12 月 31 日。
 
 它包含许多新功能，包括只读类、作为独立类型的 `null`、`false` 和 `true`、弃用的动态属性、性能改进等。
 
 ## 新的只读类
 
-PHP 8.1
-引入了 [readonly 类属性的特性](https://www.php.net/manual/zh/language.oop5.properties.php#language.oop5.properties.readonly-properties)。
+PHP 8.1 引入了 [readonly 类属性的特性](https://www.php.net/manual/zh/language.oop5.properties.php#language.oop5.properties.readonly-properties)。
 
-PHP 8.2
-已添加对将[整个类声明为 readonly ](https://www.php.net/manual/zh/language.oop5.basic.php#language.oop5.basic.class.readonly)。
+PHP 8.2 已添加对将[整个类声明为 readonly ](https://www.php.net/manual/zh/language.oop5.basic.php#language.oop5.basic.class.readonly)。
 
 如果需要将一个类声明为 `readonly`，它的所有属性将自动继承该 `readonly` 特性。
 

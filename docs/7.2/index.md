@@ -5,6 +5,10 @@ sidebar: auto
 
 # PHP 7.2
 
+::: danger 重要提示
+安全修复结束时间为：2020 年 11 月 30 日。如果正在使用当前版本，强烈建议升级到[当前版本](https://www.php.net/supported-versions)。
+:::
+
 ## 新的对象类型
 
 新的对象类型, object, 引进了可用于逆变（contravariant）参数输入和协变（covariant）返回任何对象类型。

@@ -6,6 +6,10 @@ sidebar: auto
 
 # PHP 7.1
 
+::: danger 重要提示
+安全修复结束时间为：2019 年 12 月 1 日。如果正在使用当前版本，强烈建议升级到[当前版本](https://www.php.net/supported-versions)。
+:::
+
 ## 可为空（Nullable）类型
 
 参数以及返回值的类型现在可以通过在类型前加上一个问号使之允许为空。

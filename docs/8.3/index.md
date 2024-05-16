@@ -1,12 +1,12 @@
 # PHP 8.3
 
-PHP 8.3 将在 2023-11-23 发布，主要包含以下新功能：
+PHP 8.3 将在 2023 年 11 月 23 日 发布，安全支持截止于 2027 年 12 月 31 日，主要包含以下新功能：
 
 常量类型定义、新增 `json_validate`函数、支持动态类常量和枚举成员的获取、`gc_status()` 返回额外的 GC 信息、`\Random\Randomizer` 类的新方法 `getBytesFromString`、新的 `\Random\Randomizer::getFloat()` 和 `nextFloat()` 方法、php ini 环境变量语法支持默认值、PHP CLI Lint 支持同时检查多个文件、`class_alias()` 支持为内置的 PHP 类添加别名、新的`stream_context_set_options` 函数。
 
 ## 常量类型定义
 
-在 PHP 8.3 及更高版本中，类常量可以在 const 关键字之后声明类型：
+在 PHP 8.3 及更高版本中，类常量可以在 `const` 关键字之后声明类型：
 
 ```php
 <?php
@@ -236,7 +236,7 @@ print_r(gc_status());
 | `protected`        | 布尔值 | 如果垃圾收集器受到保护并且禁止添加 root，则为 true，否则为假                                 |
 | `full`             | 布尔值 | 如果垃圾收集器缓冲区大小超过 `GC_MAX_BUF_SIZE`，则为 `true`。当前设置为 0x40000000 (1024³) |
 | `buffer_size`      | 整型  | 当前垃圾收集器缓冲区大小                                                        |
-| `application_time` | 浮点型 | 总应用时间，以秒为单位（包括collector_time）                                       |
+| `application_time` | 浮点型 | 总应用时间，以秒为单位（包括 collector_time ）                                     |
 | `collector_time`   | 浮点型 | 收集周期所花费的时间，以秒为单位（包括 destructor_time 和 free_time）                    |
 | `destructor_time`  | 浮点型 | 在循环收集期间执行析构函数所花费的时间（以秒为单位）                                          |
 | `free_time`        | 浮点型 | 在循环收集期间释放值所花费的时间（以秒为单位）                                             |

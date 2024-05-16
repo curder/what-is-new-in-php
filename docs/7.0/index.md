@@ -5,9 +5,11 @@ sidebar: auto
 
 # PHP 7.0
 
+::: danger 重要提示
+安全修复结束时间为：2018 年 12 月 3 日。如果正在使用当前版本，强烈建议升级到[当前版本](https://www.php.net/supported-versions)。
+:::
+
 PHP 7.0 给开发者带来很多新特性，它们包括：
-
-
 
 
 ## 标量类型声明

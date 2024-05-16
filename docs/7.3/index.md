@@ -6,6 +6,10 @@ sidebar: auto
 
 # PHP 7.3
 
+::: danger 重要提示
+安全修复结束时间为：2021 年 12 月 6 日。如果正在使用当前版本，强烈建议升级到[当前版本](https://www.php.net/supported-versions)。
+:::
+
 ## 灵活的 Heredoc 和 Nowdoc 语法
 
 [Heredoc](https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc) 和 [Nowdoc](https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.nowdoc) 语法能够在使用多行长字符串时起到很大帮助。它要求结束标识符应当为出现在新行的首个字符串。
