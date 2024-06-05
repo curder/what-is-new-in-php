@@ -2,9 +2,116 @@
 
 PHP 8.4 将于 2024 年 11 月 21 日发布。主要包括如下新特性：
 
+- 新的数组查找函数
 - Property Hooks
 - new 不带括号
 - 新 DOM HTML5 支持
+
+## 新的数组查找函数
+
+[PHP 8.4](https://www.php.net/releases/8.4/zh.php)将引入四个新的数组函数，它们是用于检查数组中是否存在符合特定条件的元素的辅助函数。新函数包括：
+
+- `array_find()`
+- `array_find_key()`
+- `array_any()`
+- `array_all()`
+
+### `array_find()`
+
+`array_find()` 函数返回数组中第一个满足指定条件的元素的值。如果没有找到符合条件的元素，则返回 `null`。
+
+```php
+<?php
+
+$array = [
+    'a' => 'dog',
+    'b' => 'cat',
+    'c' => 'cow',
+    'd' => 'duck',
+    'e' => 'goose',
+    'f' => 'elephant'
+];
+
+array_find($array, fn(string $value) => strlen($value) > 4); // "goose"
+
+array_find($array, fn(string $value) => str_starts_with($value, 'f')); // null
+
+// 找到数组键为该动物第一个字符的第一个动物
+array_find($array, fn(string $value, $key) => $value[0] === $key); // "cow"
+```
+
+相当于 [`Collection`](https://github.com/laravel/framework/blob/master/src/Illuminate/Collections/Collection.php) 的 [`first()`](https://github.com/laravel/framework/blob/master/src/Illuminate/Collections/Collection.php#L383) 方法。
+
+### `array_find_key()`
+
+`array_find_key()` 函数返回数组中第一个满足指定条件的元素的键。如果没有找到符合条件的元素，则返回 `null`。
+
+```php
+<?php
+$array = [
+    'a' => 'dog',
+    'b' => 'cat',
+    'c' => 'cow',
+    'd' => 'duck',
+    'e' => 'goose',
+    'f' => 'elephant'
+];
+
+array_find_key($array, fn(string $value) => strlen($value) > 4); // string(1) "e"
+
+array_find_key($array, fn(string $value) => str_starts_with($value, 'f')); // null
+
+array_find_key($array, fn(string $value, $key) => $value[0] === $key); // string(1) "c"
+```
+
+相当于 [`Collection`](https://github.com/laravel/framework/blob/master/src/Illuminate/Collections/Collection.php) 的 [`search()`](https://github.com/laravel/framework/blob/master/src/Illuminate/Collections/Collection.php#L1101) 方法。
+
+
+### `array_any()`
+
+`array_any()` 函数检查数组中是否存在至少一个满足指定条件的元素。如果找到符合条件的元素，则返回 `true`，否则返回 `false`。
+
+```php
+$array = [
+    'a' => 'dog',
+    'b' => 'cat',
+    'c' => 'cow',
+    'd' => 'duck',
+    'e' => 'goose',
+    'f' => 'elephant'
+];
+
+// 检查是否有任何动物的名字超过5个字母
+array_any($array, fn (string $value) => strlen($value) > 5); // bool(true)
+
+// 检查是否有任何动物的名字少于3个字母
+array_any($array, fn (string $value) => strlen($value) < 3); // bool(false)
+```
+
+### `array_all()`
+
+`array_all()` 函数检查数组中的所有元素是否都满足指定条件。如果所有元素都满足条件，则返回 `true`，否则返回 `false`。
+
+
+```php
+$array = [
+    'a' => 'dog',
+    'b' => 'cat',
+    'c' => 'cow',
+    'd' => 'duck',
+    'e' => 'goose',
+    'f' => 'elephant'
+];
+
+// 检查是否所有数组值都少于12个字母
+array_all($array, fn (string $value) => strlen($value) < 12); // bool(true)
+
+// 检查是否所有数组值都超过5个字母
+array_all($array, fn (string $value) => strlen($value) > 5); // bool(false)
+```
+
+
+
 
 ## Property Hooks
 
