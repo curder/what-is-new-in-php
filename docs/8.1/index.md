@@ -85,6 +85,36 @@ foreach (UserStatus::cases() as $case) {
 >
 > 它独立于等同于标量的“机器名”。 机器名用于类似数据库字段或 `HTML` 选择框这样的地方。
 
+### Transformer 或 Generator 方法
+
+可以对枚举的值或名称的添加公共方法对其进行转换，也可以使用它来生成另一个值。
+
+```php
+enum Category: string
+{
+    case Tech = "technologies";
+    case Life = "life-stories";
+    case Fun = "fun-activities";
+
+    public function link(): string
+    {
+        return "https://mysite.com/articles/" . $this->value;
+    }
+
+    public function heading(): string
+    {
+        return strtoupper($this->name);
+    }
+
+    public function imageGenerator(): ImageGenerator
+    {
+        $generator = $this->name . "ImageGenerator";
+
+        return new $generator;
+    }
+}
+```
+
 ### 判断值相等
 
 使用 `===` 操作符来判断枚举对象是否相等。
