@@ -39,6 +39,7 @@ export default defineConfig({
                 text: 'PHP 8',
                 activeMatch: '/8',
                 items: [
+                    {text: '8.5', link: '/8.5/'},
                     {text: '8.4', link: '/8.4/'},
                     {text: '8.3', link: '/8.3/'},
                     {text: '8.2', link: '/8.2/'},
