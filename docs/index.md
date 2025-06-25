@@ -15,10 +15,10 @@ features:
     details: Property Hooks、new 不带括号、新 DOM HTML5 支持
     link: /8.4/
   - title: PHP 8.3
-    details: “只读”类、新json_validate()函数、Randomizer补充、堆栈溢出检测
+    details: “只读”类、新`json_validate()`函数、Randomizer补充、堆栈溢出检测
     link: /8.3/
   - title: PHP 8.2
-    details: “只读”类、“true”类型、独立的“null”和“false”
+    details: “只读”类、`true`类型、独立的`null`和`false`类型
     link: /8.2/
   - title: PHP 8.1
     details: 枚举、“从不”返回类型、交集类型、“只读”属性
