@@ -147,11 +147,11 @@ $isRTL = Locale::isRightToLeft('he_IL'); // true (Hebrew)
 PHP 8.5 添加了一个新的常量 `PHP_BUILD_DATE`，用于获取 PHP 的编译日期。
 
 ```php
-echo PHP_BUILD_DATE; // e.g., 'Nov 15 2025 10:30:45'
+var_dump(PHP_BUILD_DATE); // 'Jul  8 2025 04:16:13'
 
-// Useful for debugging in production
-echo 'PHP Version: ' . PHP_VERSION . "\n";
-echo 'Build Date: ' . PHP_BUILD_DATE . "\n";
+// 用于在生产环境中调试
+var_dump(PHP_VERSION); // 8.5.0alpha1
+var_dump(PHP_BUILD_DATE); // Jul  8 2025 04:16:13
 ```
 
 ## CLI 功能增强 {#cli-enhancements}
