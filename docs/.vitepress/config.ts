@@ -1,5 +1,8 @@
 import {defineConfig} from 'vitepress'
 
+// 获取当前年
+const currentYear = new Date().getFullYear();
+
 export default defineConfig({
     base: "/what-is-new-in-php/",
     lang: 'zh-CN',
@@ -30,7 +33,7 @@ export default defineConfig({
         ],
         footer: {
             message: "MIT Licensed",
-            copyright: "2025-present Curder"
+            copyright: `${currentYear}-present Curder`,
         },
         nav: [
             {text: '首页', link: '/'},
