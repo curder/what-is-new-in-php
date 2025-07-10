@@ -23,15 +23,17 @@ PHP 7.3 引入了 `array_key_first()` 和 `array_key_last()` 函数，用于获�
 ```php
 $users = ['Alice', 'Bob', 'Charlie'];
 
-$firstUser = array_first($users);  // 'Alice'
-$lastUser = array_last($users);    // 'Charlie'
+$firstUser = array_first($users);
+$lastUser = array_last($users);
+var_dump($firstUser); // Alice
+var_dump($lastUser); // Charlie
 
-// Works with associative arrays too
+// 也适用于关联数组
 $data = ['name' => 'John', 'age' => 30, 'city' => 'Berlin'];
-echo array_first($data); // 'John'
-echo array_last($data);  // 'Berlin'
+var_dump(array_first($data)); // 'John'
+var_dump(array_last($data));  // 'Berlin'
 
-// Returns null for empty arrays
+// 对于空数组返回null
 $empty = [];
 var_dump(array_first($empty)); // null
 var_dump(array_last($empty));  // null
