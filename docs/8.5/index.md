@@ -52,15 +52,16 @@ PHP 8.5 引入了一个新的管道运算符 （`|>`），它允许从左到右�
 
 ```php
 $result = 'Hello World'
-    |> strtoupper(...)
-    |> str_shuffle(...)
-    |> trim(...);
-// Output: 'LWHO LDLROE0' (or similar shuffled result)
+    |> strtoupper(...) // 转换成大写字符
+|> str_shuffle(...) // 打乱字符顺序
+|> trim(...); // 去除首尾空格
 
-// Equivalent to nested calls:
+var_dump($result); // 'E ROLDHOLWL' (或者类似的随机结果)
+
+// 上面的管道操作相当于嵌套调用：
 $result = trim(str_shuffle(strtoupper('Hello World')));
 
-// Or using variables:
+// 或者使用变量：
 $result = 'Hello World';
 $result = strtoupper($result);
 $result = str_shuffle($result);
