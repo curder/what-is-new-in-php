@@ -30,7 +30,7 @@ export default defineConfig({
         ],
         footer: {
             message: "MIT Licensed",
-            copyright: "2023-present Curder"
+            copyright: "2025-present Curder"
         },
         nav: [
             {text: '首页', link: '/'},
